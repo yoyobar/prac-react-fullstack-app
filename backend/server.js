@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 
 // GET API
 app.get('/api/values', function (req, res) {
+    db.pool.query('DESC lists', (err, results) => {
+        if (err) console.log(err);
+    });
+
     db.pool.query('SELECT * FROM lists;', (err, results) => {
         if (err) {
             console.error('Database query failed:', err);
